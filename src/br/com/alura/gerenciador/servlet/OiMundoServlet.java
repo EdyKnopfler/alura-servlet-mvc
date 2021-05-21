@@ -23,7 +23,7 @@ public class OiMundoServlet extends HttpServlet {
 		PrintWriter out = resp.getWriter();
 		out.println("<html>");
 		out.println("<body>");
-		out.println("oi mundo, parabens vc escreveu o primeiro servlets.");
+		out.println("Olá mundo véio sem portêra!");
 		out.println("</body>");
 		out.println("</html>");
 		
