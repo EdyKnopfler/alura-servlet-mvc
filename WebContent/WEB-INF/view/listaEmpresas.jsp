@@ -13,9 +13,11 @@
 <title>Java Standard Taglib</title>
 </head>
 <body>
-
+	
+	<c:import url="logoutParcial.jsp" />
+	
 	<c:if test="${not empty empresa}">
-		Empresa ${ empresa } cadastrada com sucesso!
+		<p>Empresa ${ empresa } cadastrada com sucesso!</p>
 	</c:if>
 	
 	<p>

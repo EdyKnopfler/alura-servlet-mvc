@@ -6,32 +6,44 @@ import java.util.List;
 
 public class Banco {
 	
-	private static List<Empresa> lista = new ArrayList<>();
+	private static List<Empresa> listaEmpresas = new ArrayList<>();
+	private static List<Usuario> listaUsuarios= new ArrayList<>();
 	private static Integer chaveSequencial = 1;
 	
 	static {
 		Empresa empresa = new Empresa();
 		empresa.setId(chaveSequencial++);
 		empresa.setNome("Alura");
+		listaEmpresas.add(empresa);
+		
 		Empresa empresa2 = new Empresa();
 		empresa2.setId(chaveSequencial++);
 		empresa2.setNome("Caelum");
-		lista.add(empresa);
-		lista.add(empresa2);
+		listaEmpresas.add(empresa2);
+		
+		Usuario u1 = new Usuario();
+		u1.setLogin("kurko");
+		u1.setSenha("Nindo");
+		listaUsuarios.add(u1);
+		
+		Usuario u2 = new Usuario();
+		u2.setLogin("kania");
+		u2.setSenha("psim");
+		listaUsuarios.add(u2);
 	}
 
 	public void adiciona(Empresa empresa) {
 		empresa.setId(Banco.chaveSequencial++);
-		Banco.lista.add(empresa);
+		Banco.listaEmpresas.add(empresa);
 	}
 	
 	public List<Empresa> getEmpresas(){
-		return Banco.lista;
+		return Banco.listaEmpresas;
 	}
 
 	public void removeEmpresa(Integer id) {
 		
-		Iterator<Empresa> it = lista.iterator();
+		Iterator<Empresa> it = listaEmpresas.iterator();
 		
 		while(it.hasNext()) {
 			Empresa emp = it.next();
@@ -43,9 +55,18 @@ public class Banco {
 	}
 
 	public Empresa buscaEmpresaPelaId(Integer id) {
-		for (Empresa empresa : lista) {
+		for (Empresa empresa : listaEmpresas) {
 			if(empresa.getId() == id) {
 				return empresa;
+			}
+		}
+		return null;
+	}
+
+	public Usuario existeUsuario(String login, String senha) {
+		for (Usuario usuario : listaUsuarios) {
+			if (usuario.ehIgual(login, senha)) {
+				return usuario;
 			}
 		}
 		return null;

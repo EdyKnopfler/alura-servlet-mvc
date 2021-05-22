@@ -12,6 +12,8 @@
 </head>
 <body>
 
+	<c:import url="logoutParcial.jsp" />
+
 	<form action="${linkEntrada}" method="post">
 	
 		Nome: <input type="text" name="nome" value="${empresa.nome }" />

@@ -3,19 +3,31 @@ package br.com.alura.gerenciador.servlet;
 import java.io.IOException;
 
 import br.com.alura.gerenciador.acoes.Acao;
+import jakarta.servlet.Filter;
+import jakarta.servlet.FilterChain;
+import jakarta.servlet.FilterConfig;
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
-import jakarta.servlet.annotation.WebServlet;
-import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.ServletRequest;
+import jakarta.servlet.ServletResponse;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
-@WebServlet("/entrada")
-public class UnicaEntradaServlet extends HttpServlet {
+public class ControladorFilter implements Filter {
 	
-	private static final long serialVersionUID = 1L;
+	@Override
+	public void init(FilterConfig filterConfig) throws ServletException {}
 	
-	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	@Override
+	public void destroy() {}
+
+	@Override
+	public void doFilter(ServletRequest req, ServletResponse res, FilterChain chain)
+			throws IOException, ServletException {
+	
+		HttpServletRequest request = ((HttpServletRequest) req);
+		HttpServletResponse response = ((HttpServletResponse) res);
+		
 		String nomeAcao = request.getParameter("acao");
 		
 		if (nomeAcao == null) 
@@ -43,7 +55,7 @@ public class UnicaEntradaServlet extends HttpServlet {
 			rd.forward(request, response);		
 		}
 		else {
-			response.sendRedirect(endereco);
+			response.sendRedirect("entrada?acao=" + endereco);
 		}
 	}
 

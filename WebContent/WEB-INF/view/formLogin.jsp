@@ -5,19 +5,17 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Nova Empresa</title>
+<title>Login</title>
 </head>
 <body>
 
-	<c:import url="logoutParcial.jsp" />
-
 	<form action="${linkEntrada}" method="post">
 	
-		Nome: <input type="text" name="nome"  />
-		Data Abertura: <input type="text" name="data"  />
+		Login: <input type="text" name="login"  />
+		Senha: <input type="password" name="senha"  />
 		
-		<input type="hidden" name="acao" value="novaEmpresa" />
-		<button type="submit">Cadastrar</button>
+		<input type="hidden" name="acao" value="login" />
+		<button type="submit">Entrar</button>
 	</form>
 
 </body>
